@@ -1,0 +1,11 @@
+name = "Fuzzy Potato"
+license = "MIT"
+licenselink = "https://github.com/lauramosher/fuzzy-potato/blob/master/LICENSE"
+description = "An elegant 2-column responsive mobile-first design"
+tags = ["company", "landing", "responsive", "showcase", "gallery"]
+features = ["sidebar", "fixed sidebar", "reverse layout", "comics", "home feature", "featured comic", "copyright", "theme colors"]
+min_version = 0.1
+
+[author]
+  name = "Laura Mosher"
+  homepage = "https://lauramosher.com"

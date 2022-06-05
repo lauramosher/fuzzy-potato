@@ -1,0 +1,6 @@
+{{ define "main" -}}
+<h1>{{ .Title }}</h1>
+<div class="comic-container {{ if .Params.feature_first }}comic-feature-first{{end}}" oncontextmenu="return false">
+{{ .Content }}
+</div>
+{{end}}

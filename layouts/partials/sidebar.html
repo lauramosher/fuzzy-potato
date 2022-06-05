@@ -1,0 +1,38 @@
+<aside class="sidebar {{ if .Site.Params.hideLogo }}sidebar-collapse-logo{{end}}">
+  <div class="sidebar-logo">
+    {{ $logo := resources.GetMatch .Site.Params.logo }}
+    {{ with $logo }}
+      <img src="{{.RelPermalink}}" />
+    {{end}}
+  </div>
+  <div class="sidebar-title">
+    <header>
+      <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
+    </header>
+    <p class="pitch">
+    {{ with .Site.Params.description }} {{.}} {{ else }}A beautiful two column mobile-first open source theme for <a href="http://gohugo.io">hugo</a> made by <a href="https://www.lauramosher.com">Laura Mosher LLC</a>.{{end}}
+    </p>
+  </div>
+
+  <nav>
+    <ul class="sidebar-nav">
+      <li><a href="{{ .Site.BaseURL }}">{{ with .Site.Params.homePageTitle }}{{.}}{{else}}Home{{end}}</a> </li>
+      {{ range .Site.Menus.main.ByWeight -}}
+        <li><a href="{{.URL}}"> {{ .Name }} </a></li>
+      {{- end }}
+    </ul>
+
+    <p>
+      &copy; {{ with $.Param "copyright.start"}}{{.}} - {{end}}{{now.Format "2006"}}
+      {{ with .Site.Params.copyright }}
+        {{ with $.Param "copyright.link"}}
+          <a href="{{.}}">{{ $.Param "copyright.text" }}</a>
+        {{else}}
+          {{.}}
+        {{end}}
+      {{ else }}
+        All rights reserved.
+      {{end}}
+    </p>
+  </nav>
+</aside>

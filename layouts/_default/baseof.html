@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"{{with .Site.LanguageCode}} xml:lang="{{.}}" lang="{{.}}"{{end}}>
+  {{ partial "head.html" . }}
+  <body class="{{ .Site.Params.themeColor }} {{if .Site.Params.reverseLayout}}layout-reverse{{end}} {{if .Site.Params.enableStickySidebar}}sidebar-sticky{{end}}">
+  {{ partial "sidebar.html" . }}
+    <main class="content container">
+    {{ block "main" . -}}{{- end }}
+    </main>
+  </body>
+</html>

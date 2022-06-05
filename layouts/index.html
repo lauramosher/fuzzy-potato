@@ -1,0 +1,29 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+<div class="posts">
+  {{range first 1 (where (where .Site.Pages "Section" "comics") "Params.Featured" "==" true )}}
+    <div class="post featured-post">
+      {{ $image := .Page.Resources.GetMatch .Params.feature_image }}
+      {{ $image := $image.Resize "300x300" }}
+      {{ if $image }}
+        <a href="{{ .Permalink }}"><img src="{{ $image.RelPermalink }}" oncontextmenu="return false"/></a>
+      {{else}}
+        <a href="{{ .Permalink }}"><p>{{.Title}}</p></a>
+      {{end}}
+    </div>
+  {{end}}
+  {{ range where (where .Site.RegularPages "Section" "comics") "Params.Featured" "!=" true -}}
+    <div class="post">
+      {{ $image := .Page.Resources.GetMatch .Params.feature_image }}
+      {{ if $image }}
+        {{ $image := $image.Resize "150x150" }}
+        <a href="{{ .Permalink }}"><img src="{{ $image.RelPermalink }}" oncontextmenu="return false"/></a>
+      {{else}}
+        <a href="{{ .Permalink }}"><p>{{.Title}}</p></a>
+      {{end}}
+    </div>
+  {{- end}}
+</div>
+{{ end }}

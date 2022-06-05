@@ -1,0 +1,1 @@
+<a{{ if .id }} id="{{ .id }}"{{ end }} href="{{ if .href }}{{ .href | safeURL }}{{ end }}" target="{{ if .target }}{{ .target }}{{ end }}" class="button {{ if .class }}{{print " " .class}}{{ else }}{{ "button" }}{{ end }}"{{if .disabled }} disabled{{end}}>{{ .value | default "My Button"}}</a>
